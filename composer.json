@@ -1,0 +1,14 @@
+{
+    "name": "ivvy/ads-element",
+    "description": "The beginning of something new",
+    "authors": [
+        {
+            "name": "Petro Tkachuk",
+            "email": "petro.tkachuk@ivvysoft.com"
+        }
+        ],
+    "require": {
+        "php": ">=7.0.0",
+        "laravel/framework": "5.7.*"
+    }
+}

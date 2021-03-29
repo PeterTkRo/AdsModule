@@ -1,0 +1,6 @@
+.idea
+vendor
+.htaccess
+node_modules
+.git
+composer.lock
