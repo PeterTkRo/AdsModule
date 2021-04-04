@@ -16,4 +16,16 @@ class AdsServiceProvider extends ServiceProvider
     {
         $this->autoload();
     }
+
+    /**
+     * @param $name
+     * @param $directory
+     * @param $namespace
+     */
+    public function container($name, $directory, $namespace)
+    {
+        $this->name = $name;
+        $this->directory = $directory;
+        $this->namespace = $namespace;
+    }
 }
