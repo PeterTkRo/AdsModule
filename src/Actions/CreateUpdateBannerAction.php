@@ -25,7 +25,15 @@ class CreateUpdateBannerAction
             $banner = new Banners();
         }
         try {
-            $banner->load($request->all());
+            $banner->active = $request->active == "on" ? true : false;
+            $banner->discount = $request->discount;
+            if ((int) $request->banner_type == Banners::PRODUCT_BANNER_TYPE) {
+                $banner->url = $request->product_url;
+            }
+            $banner->banner_url = $request->image;
+            $banner->banner_type = $request->banner_type;
+            $banner->created_by = Auth::id();
+            $banner->updated_by = Auth::id();
             $banner->save();
             foreach ($languages as $language) {
                 $bannerI18N = new BannersI18N();

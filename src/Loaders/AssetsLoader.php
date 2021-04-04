@@ -9,6 +9,6 @@ trait AssetsLoader
      */
     protected function loadContainerAssets()
     {
-        //TODO
+
     }
 }

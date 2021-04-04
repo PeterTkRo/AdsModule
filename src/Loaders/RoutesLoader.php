@@ -37,9 +37,8 @@ trait RoutesLoader
      */
     protected function loadContainerRoutes()
     {
-        $this->loadHttpRoutes("{$this->directory}/Ui/Api/Routes");
-        $this->loadHttpRoutes("{$this->directory}/Ui/Web/Routes");
-        $this->loadConsoleRoutes("{$this->directory}/Ui/Cli/Routes");
+        $this->loadHttpRoutes("{$this->directory}/UI/API/Routes");
+        $this->loadHttpRoutes("{$this->directory}/UI/Web/Routes");
     }
 
     /**
@@ -47,17 +46,6 @@ trait RoutesLoader
      * @return void
      */
     private function loadHttpRoutes($directory)
-    {
-        if (File::isDirectory($directory)) {
-            $this->loadRoutesFrom($directory . '/routes.php');
-        }
-    }
-
-    /**
-     * @param $directory
-     * @return void
-     */
-    private function loadConsoleRoutes($directory)
     {
         if (File::isDirectory($directory)) {
             $this->loadRoutesFrom($directory . '/routes.php');

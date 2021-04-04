@@ -19,6 +19,6 @@ trait ViewsLoader
      */
     protected function loadContainerViews()
     {
-        $this->loadViewsFrom("{$this->directory}/Ui/Web/Views", $this->name);
+        $this->loadViewsFrom("{$this->directory}/UI/Web/Views", $this->name);
     }
 }

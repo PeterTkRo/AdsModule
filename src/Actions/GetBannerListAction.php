@@ -14,6 +14,6 @@ class GetBannerListAction
      */
     public static function run(Request $request, BannerRepositoryInterface $bannerRepository): ?array
     {
-        return $bannerRepository->getBannerList($request->criteria, config('banner.setting.paginate'));
+        return $bannerRepository->getBannerList($request->criteria ?? [], config('banner.setting.paginate'));
     }
 }

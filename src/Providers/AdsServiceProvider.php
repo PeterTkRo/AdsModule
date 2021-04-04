@@ -15,7 +15,7 @@ class AdsServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->name = 'Ads';
-        $this->directory = __DIR__. '/../';
+        $this->directory = __DIR__. '/..';
         $this->namespace = 'Ivvy\Ads';
         $this->autoload();
     }
