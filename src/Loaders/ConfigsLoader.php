@@ -16,7 +16,7 @@ trait ConfigsLoader
      */
     protected function loadContainerConfigs()
     {
-        $this->loadConfigs("{$this->directory}/../config");
+        $this->loadConfigs("{$this->directory}/config");
     }
 
     /**

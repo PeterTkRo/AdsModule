@@ -8,6 +8,9 @@
             "email": "petro.tkachuk@ivvysoft.com"
         }
         ],
+    "autoload": {
+        "psr-4": {"Ivvy\\Ads\\": "src/"}
+    },
     "require": {
         "php": ">=7.1.0",
         "laravel/framework": "5.7.*"
