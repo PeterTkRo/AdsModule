@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Modules\BannersModule\Models;
+namespace Ivvy\Ads\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\App;
 
 class BannersI18N extends  Model
 {
