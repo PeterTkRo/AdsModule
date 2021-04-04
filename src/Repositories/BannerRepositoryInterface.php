@@ -17,7 +17,7 @@ interface BannerRepositoryInterface
     /**
      * @param array $criteria
      * @param int $paginate
-     * @return array|null
+     * @return object|null
      */
-    public function getBannerList(array $criteria, int $paginate) : ?array ;
+    public function getBannerList(array $criteria, int $paginate) : ?object ;
 }

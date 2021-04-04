@@ -13,7 +13,7 @@ class BannerRepository implements BannerRepositoryInterface
     public function getBanner(?int $bannerId) : ?Banners
     {
         if ($bannerId) {
-            return Banners::active()->where('id',$bannerId)->with('bannersI18N')->first();
+            return Banners::where('id',$bannerId)->with('bannersI18N')->first();
         }
         return null;
     }
@@ -21,10 +21,10 @@ class BannerRepository implements BannerRepositoryInterface
     /**
      * @param array $criteria
      * @param integer $paginate
-     * @return array|null
+     * @return object|null
      */
-    public function getBannerList(array $criteria, int $paginate): ?array
+    public function getBannerList(array $criteria, int $paginate): ?object
     {
-        return Banners::active()->where($criteria)->with('bannersI18N')->paginate($paginate);
+        return Banners::where($criteria)->with('bannersI18N')->paginate($paginate);
     }
 }

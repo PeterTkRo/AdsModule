@@ -12,7 +12,7 @@
         "psr-4": {"Ivvy\\Ads\\": "src/"}
     },
     "require": {
-        "php": ">=7.1.0",
+        "php": ">=7.4.0",
         "laravel/framework": "5.7.*"
     }
 }

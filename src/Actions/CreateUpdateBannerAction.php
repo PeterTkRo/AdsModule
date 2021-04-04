@@ -23,6 +23,8 @@ class CreateUpdateBannerAction
         $banner = $bannerRepository->getBanner($request->bannerId);
         if (!$banner) {
             $banner = new Banners();
+            $banner->created_by = Auth::id();
+            $create = true;
         }
         try {
             $banner->active = $request->active == "on" ? true : false;
@@ -32,16 +34,20 @@ class CreateUpdateBannerAction
             }
             $banner->banner_url = $request->image;
             $banner->banner_type = $request->banner_type;
-            $banner->created_by = Auth::id();
             $banner->updated_by = Auth::id();
             $banner->save();
             foreach ($languages as $language) {
-                $bannerI18N = new BannersI18N();
+                if (isset($create)) {
+                    $bannerI18N = new BannersI18N();
+                    $bannerI18N->created_by = Auth::id();
+                } else {
+                    $bannerI18N = $banner->bannersI18N();
+                }
+
                 $bannerI18N->banner_id = $banner->id;
                 $description_col = 'description_' . $language;
                 $bannerI18N->description = $request->$description_col;
                 $bannerI18N->local = $language;
-                $bannerI18N->created_by = Auth::id();
                 $bannerI18N->updated_by = Auth::id();
                 $bannerI18N->save();
             }

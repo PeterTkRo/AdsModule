@@ -1,10 +1,12 @@
 <?php
 
-namespace Ivvy\Ads\Web\Controllers;
+namespace Ivvy\Ads\UI\Web\Controllers\Admin;
 
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\View\View;
 use Ivvy\Ads\Actions\CreateUpdateBannerAction;
 use Ivvy\Ads\Actions\GetBannerAction;
 use Ivvy\Ads\Actions\GetBannerListAction;
@@ -16,7 +18,7 @@ class AdminController extends Controller
 
     use WebResponseTrait;
 
-    protected $bannerRepository;
+    protected BannerRepository $bannerRepository;
 
     public function __construct()
     {
@@ -28,7 +30,7 @@ class AdminController extends Controller
      *
      * @param Request $request
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index(Request $request)
     {
@@ -42,7 +44,7 @@ class AdminController extends Controller
      *
      * @param Request $request
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|RedirectResponse
+     * @return Factory|View|RedirectResponse
      */
     public function create(Request $request)
     {
@@ -60,7 +62,7 @@ class AdminController extends Controller
      * Show the form for editing the specified resource.
      * @param Request $request
      * @param int $bannerID
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|RedirectResponse
+     * @return Factory|View|RedirectResponse
      */
     public function update(Request $request, int $bannerID)
     {

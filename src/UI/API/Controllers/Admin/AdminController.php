@@ -1,49 +1,55 @@
 <?php
 
-namespace Ivvy\Ads\API\Controllers;
+namespace Ivvy\Ads\UI\API\Controllers\Admin;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Ivvy\Ads\Actions\ChangeBannerStatusAction;
+use Ivvy\Ads\Actions\RemoveBannerAction;
+use Ivvy\Ads\Repositories\BannerRepository;
+use Ivvy\Ads\Traits\ApiResponseTrait;
 
 class AdminController
 {
+    use ApiResponseTrait;
+
+    protected BannerRepository $bannerRepository;
+
+    public function __construct()
+    {
+        $this->bannerRepository = new BannerRepository();
+    }
+
     /**
      * change status (active) product AJAX
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function changeBannerStatusByIdAjax(Request $request)
+    public function changeBannerStatusByIdAjax(Request $request): JsonResponse
     {
-        $banner_id = $request->item_id;
-        if ($banner_id != null || $banner_id != '') {
-
-            Banners::where('id', $banner_id)->update([
-                'active' => $request->active,
-                'updated_by' => Auth::id(),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]);
-
-            return response()->json(['text' => "Banner id-$banner_id status has been changed with"]);
-
+        $result = ChangeBannerStatusAction::run($request, $this->bannerRepository);
+        if ($result) {
+            return $this->json(['text' => "Banner id-$request->item_id status has been changed with"]);
         } else {
-
-            return response()->json(['error' => "Something went wrong. Try again latter"], 404);
+            return $this->error(['error' => "Something went wrong. Try again latter"]);
         }
     }
 
     /**
      * delete Products by id or array id
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function removeBannerByIdAjax(Request $request)
+    public function removeBannerByIdAjax(Request $request): JsonResponse
     {
-        if (isset($request->item_id)){
-            Banners::whereIn('id', $request->item_id)->delete();
+        $result = RemoveBannerAction::run($request, $this->bannerRepository);
+        if ($result) {
+            return $this->json([
+                'reload_page' => true,
+                'text' => 'Products has been removed!'
+            ]);
         }
-        return response()->json([
-            'reload_page' => true,
-            'text' => 'Products has been removed!'
-        ]);
+        return $this->error('Fail');
     }
 }
