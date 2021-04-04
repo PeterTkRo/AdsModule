@@ -15,13 +15,15 @@ class RemoveBannerAction
      */
     public static function run(Request $request, BannerRepositoryInterface $bannerRepository): bool
     {
-        $banner = $bannerRepository->getBanner($request->item_id);
-        if ($banner) {
-            try {
-                $banner->delete();
-            } catch (AdsException $exception) {
-                $exception->log();
-                return false;
+        foreach ($request->item_id as $bannerId) {
+            $banner = $bannerRepository->getBanner($bannerId);
+            if ($banner) {
+                try {
+                    $banner->delete();
+                } catch (AdsException $exception) {
+                    $exception->log();
+                    return false;
+                }
             }
         }
         return true;

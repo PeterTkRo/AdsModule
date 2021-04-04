@@ -50,21 +50,21 @@
                                 <div class="grid-row-12">
                                     <div class="col-sm-6 col-12">
                                         <div class="form-group">
-                                            <label>@lang('banner.banner-type')</label>
+                                            <label>@lang('ads::banner.banner-type')</label>
                                             <select class="form-control one-item-dropdown-chosen check-banner-type" name="banner_type">
                                                 <option value="" {{isset($banner) && $banner->banner_type > 0 ? '' : 'selected'}}>@lang('admin.notChoosing')</option>
                                                 <option value="1" {{isset($banner) &&  $banner->banner_type == 1 ? 'selected' : ''}}>
-                                                    @lang('banner.category-banner')
+                                                    @lang('ads::banner.category-banner')
                                                 </option>
                                                 <option value="2" {{isset($banner) &&  $banner->banner_type == 2 ? 'selected' : ''}}>
-                                                    @lang('banner.product-banner')
+                                                    @lang('ads::banner.product-banner')
                                                 </option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-12">
                                         <div class="form-group product-banner">
-                                            <label>@lang('banner.banner-url')</label>
+                                            <label>@lang('ads::banner.banner-url')</label>
                                             <input class="form-control" type="text"
                                                    name="product_url" {!! isset($banner) ? 'value="'.$banner->url.'"' : '' !!}>
                                         </div>
@@ -73,7 +73,7 @@
                                 <div class="grid-row-12">
                                     <div class="col-sm-6 col-12">
                                         <div class="form-group category-banner">
-                                            <label>@lang('banner.banner-discount')</label>
+                                            <label>@lang('ads::banner.banner-discount')</label>
                                             <input class="form-control" type="text"
                                                    name="discount" {!! isset($banner) ? 'value="'.$banner->discount.'"' : '' !!}>
                                         </div>
@@ -88,7 +88,7 @@
                     <div class="checkbox check-block">
                         <input id="descr-check" type="checkbox" value="1">
                         <label for="descr-check">
-                            <span class="checkbox-icon"></span>@lang('banner.add-category-descr')
+                            <span class="checkbox-icon"></span>@lang('ads::banner.add-category-descr')
                             <div class="products-arrow">
                                 <span class="icon-material-outline-keyboard-arrow-down material-icon black"></span>
                             </div>
@@ -109,7 +109,7 @@
                                 <div class="grid-row-12">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label class="bold" for="description_{{$language ?? ''}}">@lang('banner.description') {{$language ?? ''}}:</label>
+                                            <label class="bold" for="description_{{$language ?? ''}}">@lang('ads::banner.description') {{$language ?? ''}}:</label>
                                             <input class="form-control" type="text"
                                                    name="description_{{$language ?? ''}}" value="{{isset($banner, $banner->langBannersI18N($language)->description) ? $banner->langBannersI18N($language)->description : ''}}">
                                         </div>
@@ -131,7 +131,7 @@
                                 <div class="checkbox">
                                     <input type="checkbox" name="active" {{ isset($banner) && $banner->active == 1 ? 'checked' : ''}}>
                                     <label for="active">
-                                        <span class="checkbox-icon"></span>@lang('banner.active')
+                                        <span class="checkbox-icon"></span>@lang('ads::banner.active')
                                     </label>
                                 </div>
                             </div>

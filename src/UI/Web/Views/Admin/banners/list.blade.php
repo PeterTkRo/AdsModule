@@ -45,11 +45,11 @@
                             </div>
                         </th>
                     @endif
-                    <th>@lang('banner.active')</th>
+                    <th>@lang('ads::banner.active')</th>
                     <th>id</th>
-                    <th>@lang('banner.photo')</th>
-                    <th>@lang('banner.description')</th>
-                    <th>@lang('banner.banner-type')</th>
+                    <th>@lang('ads::banner.photo')</th>
+                    <th>@lang('ads::banner.description')</th>
+                    <th>@lang('ads::banner.banner-type')</th>
                 </tr>
                 </thead>
                 <tbody>
